@@ -1,7 +1,11 @@
 use rand::distributions::{Distribution, Uniform};
+use std::cmp;
+use std::mem;
 
 fn main() {
-    let v = random_vector(10, 2);
+    let mut v = random_vector(100, 200);
+    println!("{:?}", v);
+    selection_sort(&mut v, 100);
     println!("{:?}", v);
 }
 
@@ -25,4 +29,17 @@ fn linear_search(s: &[i32], target: i32) -> usize {
         .expect("no element that exists that equal target")
 }
 
-fn selection_sort(v: &mut Vec<i32>, size: usize) {}
+fn selection_sort(v: &mut [i32], size: usize) {
+    let mut min = 0;
+    let mut min_index: usize;
+    for i in 0..size {
+        min_index = i;
+        for j in i + 1..size {
+            if v[j] < v[min_index] {
+                min = v[j];
+                min_index = j;
+            }
+        }
+        v.swap(i, min_index);
+    }
+}
