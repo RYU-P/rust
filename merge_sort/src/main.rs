@@ -1,7 +1,4 @@
 use rand::distributions::{Distribution, Uniform};
-use std::cmp;
-use std::mem;
-
 fn main() {
     let mut v = random_vector(100, 200);
     println!("{:?}", v);
