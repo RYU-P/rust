@@ -1,4 +1,4 @@
-use rand::Rng;
+use rand::distributions::{Distribution, Uniform};
 
 fn main() {
     let v = random_vector(10, 2);
@@ -6,10 +6,11 @@ fn main() {
 }
 
 fn random_vector(size: usize, max: i32) -> Vec<i32> {
+    let range = Uniform::from(0..max);
     let mut rng = rand::thread_rng();
     let mut v = Vec::with_capacity(size);
     for _ in 0..size {
-        v.push(rng.gen_range(0..max));
+        v.push(range.sample(&mut rng));
     }
     v
 }
