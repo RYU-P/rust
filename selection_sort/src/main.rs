@@ -1,6 +1,9 @@
 use rand::distributions::{Distribution, Uniform};
 fn main() {
-    println!("Hello, world!");
+    let mut v = random_vector(100, 100);
+    println!("{:?}", v);
+    selection_sort(&mut v, 100);
+    println!("{:?}", v);
 }
 
 fn random_vector(size: usize, max: i32) -> Vec<i32> {
