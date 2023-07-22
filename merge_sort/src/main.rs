@@ -1,5 +1,4 @@
 use rand::distributions::{Distribution, Uniform};
-
 fn main() {
     let mut v = random_vector(1000, 1000);
     println!("{:?}", v);
