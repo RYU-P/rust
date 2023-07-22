@@ -3,7 +3,7 @@ use rand::distributions::{Distribution, Uniform};
 fn main() {
     let mut v = random_vector(1000, 1000);
     println!("{:?}", v);
-    
+
     merge_sort(&mut v);
     println!("{:?}", v);
 }
@@ -16,16 +16,6 @@ fn random_vector(size: usize, max: i32) -> Vec<i32> {
         v.push(range.sample(&mut rng));
     }
     v
-}
-
-fn sum_slice(s: &[i32]) -> i32 {
-    s.iter().sum()
-}
-
-fn linear_search(s: &[i32], target: i32) -> usize {
-    s.iter()
-        .position(|&num| num == target)
-        .expect("no element that exists that equal target")
 }
 
 fn merge_sort(arr: &mut [i32]) {
@@ -76,5 +66,3 @@ fn merge(left: &[i32], right: &[i32], result: &mut [i32]) {
         k += 1;
     }
 }
-
-
