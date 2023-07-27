@@ -43,8 +43,8 @@ fn partition(array: &mut [i32]) -> usize {
         }
         else {
             array.swap(a,b);
-            a = 0;
-            b = array.len() - 2;
+            a += 1;
+            b -= 1;
         }   
     }
     array.swap(a, pivot);
