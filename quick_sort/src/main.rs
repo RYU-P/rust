@@ -26,30 +26,28 @@ fn quick_sort(slice: &mut [i32]) {
 }
 
 fn partition(array: &mut [i32]) -> usize {
-    let range = Uniform::from(0..array.len() - 1); //for generating random number
+    let range = Uniform::from(0..array.len()); //for generating random number
     let mut rng = rand::thread_rng(); //for generating random number
     let mut pivot = range.sample(&mut rng);
     //swap pivot with last element
     array.swap(pivot, array.len() - 1);
     pivot = array.len() - 1;
     let mut a: usize = 0; //to store the index of element that is larger than pivot starting from left side of the array.
-    let mut b: usize = array.len()-2; //to store the index of element that is smaller than pivot starting from the right side of the arra
-    while a <= b {
-        for i in 0..pivot {
-            if array[i] > array[pivot] {
-                a = i;
-                break;
-            }
+    let mut b: usize = array.len() - 2; //to store the index of element that is smaller than pivot starting from the right side of the arra
+    while a < b {
+        if array[a] <= array[pivot] {
+            a += 1;
         }
-        for j in (0..pivot).rev() {
-            if array[j] < array[pivot] {
-                b = j;
-                break;
-            }
+        else if array[b] > array[pivot] {
+            b -= 1;
         }
-        array.swap(a, b);
+        else {
+            array.swap(a,b);
+            a = 0;
+            b = array.len() - 2;
+        }   
     }
     array.swap(a, pivot);
-    pivot = a;
-    return pivot;
+    pivot = a; //at this point everything to the left of pivot should be smaller than a and to the right greater.
+    pivot
 }
