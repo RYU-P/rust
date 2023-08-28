@@ -1,3 +1,5 @@
+use std::{collections::HashMap, hash::Hash};
+
 struct Solution;
 
 impl Solution {
@@ -23,7 +25,7 @@ impl Solution {
         let mut array2: [i32; 26] = [0;26];
         let mut index1;
         let mut index2; 
-        for i in 0..len {
+        for i in 0..len1 {
             index1 = 
                 s.chars()
                 .nth(i)
@@ -40,15 +42,41 @@ impl Solution {
         }
         false
     }
+
+    pub fn is_anagram3(s: String, t: String) -> bool {
+        let len1 = s.len();
+        let len2 = t.len();
+        if len1 != len2{
+            return false;
+        }
+        let mut map1: HashMap<char, i32> = HashMap::new();
+        let mut map2: HashMap<char, i32> = HashMap::new();
+        for i in 0..len1 {
+            if let Some(count) = map1.get_mut(&s.chars().nth(i).unwrap()) {
+                *count += 1;
+            } else {
+                map1.insert(s.chars().nth(i).unwrap(),1);
+            }
+            if let Some(count) = map2.get_mut(&s.chars().nth(i).unwrap()) {
+                *count += 1;
+            } else {
+                map2.insert(s.chars().nth(i).unwrap(),1);
+            }
+        }
+        if map1 == map2 {
+            return true;
+        }
+        false
+    }
 }
 
 fn main() {
     let s1 = String::from("anagram");
     let t1 = String::from("nagaram");
-    let s2 = String::from("rat");
-    let t2 = String::from("car");
-    println!("{}", Solution::is_anagram2(s1, t1));
-    println!("{}", Solution::is_anagram2(s2, t2));
+    let s2 = String::from("a");
+    let t2 = String::from("ab");
+    println!("{}", Solution::is_anagram3(s1, t1));
+    println!("{}", Solution::is_anagram3(s2, t2));
 }
 
 /*
