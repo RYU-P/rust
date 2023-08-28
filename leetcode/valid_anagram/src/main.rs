@@ -57,10 +57,10 @@ impl Solution {
             } else {
                 map1.insert(s.chars().nth(i).unwrap(),1);
             }
-            if let Some(count) = map2.get_mut(&s.chars().nth(i).unwrap()) {
+            if let Some(count) = map2.get_mut(&t.chars().nth(i).unwrap()) {
                 *count += 1;
             } else {
-                map2.insert(s.chars().nth(i).unwrap(),1);
+                map2.insert(t.chars().nth(i).unwrap(),1);
             }
         }
         if map1 == map2 {
