@@ -75,8 +75,8 @@ fn main() {
     let t1 = String::from("nagaram");
     let s2 = String::from("a");
     let t2 = String::from("ab");
-    println!("{}", Solution::is_anagram3(s1, t1));
-    println!("{}", Solution::is_anagram3(s2, t2));
+    println!("{}", Solution::is_anagram1(s1, t1));
+    println!("{}", Solution::is_anagram1(s2, t2));
 }
 
 /*
