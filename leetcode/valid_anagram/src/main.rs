@@ -14,7 +14,11 @@ impl Solution {
     }
 
     pub fn is_anagram2(s: String, t: String) -> bool {
-        let len = s.len();
+        let len1 = s.len();
+        let len2 = t.len();
+        if len1 != len2{
+            return false;
+        }
         let mut array1: [i32; 26] = [0;26];
         let mut array2: [i32; 26] = [0;26];
         let mut index1;
