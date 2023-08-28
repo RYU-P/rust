@@ -1,5 +1,6 @@
 //two sums
 //may assume that there is exactly one solution.
+use std::collections::HashMap;
 struct Solution;
 
 impl Solution {
@@ -15,6 +16,17 @@ impl Solution {
       } 
       return nums;
     }
+
+    pub fn two_sum2(nums: Vec<i32>, target: i32) -> Vec<i32> {
+        let mut map: HashMap<i32,i32> = HashMap::new();
+        for i in 0..nums.len() {
+            if map.contains_key(&(target - nums[i])) {
+               return vec![i as i32, *map.get(&(&target - nums[i])).unwrap()]; 
+           }
+           map.insert(nums[i], i as i32);
+        }
+    return nums;
+    }
 }
 fn main() {
     let nums1 = vec![2,7,11,15];
@@ -23,9 +35,9 @@ fn main() {
     let target2 = 6;
     let nums3 = vec![3,3];
     let target3 = 6;
-    println!("{:?}", Solution::two_sum(nums1, target1));
-    println!("{:?}", Solution::two_sum(nums2, target2));    
-    println!("{:?}", Solution::two_sum(nums3, target3));
+    println!("{:?}", Solution::two_sum2(nums1, target1));
+    println!("{:?}", Solution::two_sum2(nums2, target2));    
+    println!("{:?}", Solution::two_sum2(nums3, target3));
 }
 
 /*
