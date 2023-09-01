@@ -16,7 +16,7 @@ impl Solution {
       } 
       return nums;
     }
-
+    //O(n) solution using hash maps
     pub fn two_sum2(nums: Vec<i32>, target: i32) -> Vec<i32> {
         let mut map: HashMap<i32,i32> = HashMap::new();
         for i in 0..nums.len() {
