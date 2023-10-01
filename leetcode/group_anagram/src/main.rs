@@ -1,5 +1,5 @@
-use std::collections::HashMap;
 
+use std::collections::HashMap;
 struct Solution;
 
 impl Solution {
